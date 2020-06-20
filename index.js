@@ -5,9 +5,13 @@
 */
 
 const principal=200000;
+console.log('principal: ', principal);
 const interestRate=0.05;
+console.log('interestRate: ', interestRate);
 const years=30;
+console.log('years: ', years);
 const name="Gregory";
+console.log('name: ', name);
 
 // 🏡 Task 1.5: Simple Math
 /* To create a monthly mortgage rate calculator, we need to know the number of years in months and the monthly interest rate. 
@@ -17,7 +21,9 @@ const name="Gregory";
 */
 
 const monthlyInterestRate=interestRate/12; 
-const periods=years(12);
+const periods=years*12;
+console.log('periods: ', periods);
+
 
 // 🏡 Task 2: Harder Math
 /* Create your calculator! Use the formula in the ReadMe (also below) to run calculations on your numbers. Save the final value into a variable called monthlyRate. 
@@ -28,16 +34,24 @@ Hint: while these calculations can be done in one line, it might be helpful to c
 
 (1) Create a variable called n1 and set it equal to  (1 + monthlyInterestRate )^N
 (2) Create a variable called numerator and set it equal to p * n1 * monthlyInterestRate
-(3) Create a variable called denominator and set it equal to n1 - 1 
+(3) Create a variable called denominator and set it equal to n1 - 1
 (4) Create a variable called monthlyRate and set it equal to numerator/denominator
 
 Hint #2: you'll need to use the `math` object for parts of this calculation!
 
 When your math is correct, monthlyRate will equal 1073.64
 */
+var n1=Math.pow(1+monthlyInterestRate,periods);
+console.log('n1: ', n1);
 
+const numerator=principal * n1 * monthlyInterestRate;
+console.log('numerator: ', numerator);
 
+const denominator=n1-1;
+console.log('denominator: ', denominator);
 
+const monthlyRate=numerator/denominator;
+console.log('monthlyRate: ', monthlyRate.toFixed(2));
 
 // 🏡 Task 3: Function
 /* Create a function called `mortgageCalculator` that combines all of the steps from task 1 and 2 and returns a sentence "{Name}, your monthly rate is ${monthlyRate}"
