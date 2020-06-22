@@ -115,19 +115,31 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.055, your monthly rate is $1136"
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
+// function variableInterestRate(p, i, n) {
+//     for (i = i - 0.2 ; i < 5; i=i+.5){ 
+//     let Pow = Math.pow(1+i/12,n*12)
+//     let M = p*(Pow*(i/12))/(Pow-1)
+//     console.log(name, "with and interest rate of "+i.toFixed(2)+", your monthly rate is "+M.toFixed(2))
+//     }
+// }
+// variableInterestRate(200000, 0.04, 30)
+
 
 var input;
 input = window.prompt('Enter starting interest rate', '0.02');
-console.log('input: ', input);
 let i = input;
+
 function variableInterestRate(p, i, n) {
     for (i = i ; i <= .06; i=i+.005){
     let Pow = Math.pow(1+i/12,n*12)
     let M = p*(Pow*(i/12))/(Pow-1)
-    console.log(name, "with and interest rate of "+i.toFixed(2)+", your monthly interest rate is "+M.toFixed(2))
+    console.log(name, "with an interest rate of "+i.toFixed(3).+", your monthly rate is "+Math.round(M)
     }
 }
 variableInterestRate(200000, 0.04, 30)
+
+
+
 // MY PROBLEM ON THIS ONE WAS UNDERSTANDING WHAT IS MEANT BY PLUS OR MINUS 2%
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
