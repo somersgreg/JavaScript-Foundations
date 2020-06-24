@@ -20,9 +20,9 @@ console.log('name: ', name);
 (2) Create another variable called `periods` and give it the value of years*12.
 */
 
-// const monthlyInterestRate=interestRate/12; 
-// const periods=years*12;
-// console.log('periods: ', periods);
+const monthlyInterestRate=interestRate/12; 
+const periods=years*12;
+console.log('periods: ', periods);
 
 
 // 🏡 Task 2: Harder Math
@@ -41,27 +41,27 @@ Hint #2: you'll need to use the `math` object for parts of this calculation!
 
 When your math is correct, monthlyRate will equal 1073.64
 */
-// var n1=Math.pow(1+monthlyInterestRate,periods);
-// console.log('n1: ', n1);
+var n1=Math.pow(1+monthlyInterestRate,periods);
+console.log('n1: ', n1);
 
-// const numerator=principal * n1 * monthlyInterestRate;
-// console.log('numerator: ', numerator);
+const numerator=principal * n1 * monthlyInterestRate;
+console.log('numerator: ', numerator);
 
-// const denominator=n1-1;
-// console.log('denominator: ', denominator);
+const denominator=n1-1;
+console.log('denominator: ', denominator);
 
-// const monthlyRate=numerator/denominator;
-// console.log('monthlyRate: ', monthlyRate.toFixed(2));
+const monthlyRate=numerator/denominator;
+console.log('monthlyRate: ', monthlyRate.toFixed(2));
 
 // 🏡 Task 3: Function
 /* Create a function called `mortgageCalculator` that combines all of the steps from task 1 and 2 and returns a sentence "{Name}, your monthly rate is ${monthlyRate}"
 
 If your name is `Oscar` mortgageCalculator() should return "Oscar, your monthly rate is 1073.64"
 */
-// function mortgageCalculator() { console.log(name,"your monthly rate is $"+monthlyRate.toFixed(2))};
-// mortgageCalculator();  // call the function
+function mortgageCalculator() { console.log(name,"your monthly rate is $"+monthlyRate.toFixed(2))};
+mortgageCalculator();  // call the function
 
-// console.log(((('name: ', name)+', your monthly rate is $')+monthlyRate.toFixed(2))+'!!');
+console.log(((('name: ', name)+', your monthly rate is $')+monthlyRate.toFixed(2))+'!!');
 // This was my first attempt.  I couldnt get this to work in a function. Maybe console was down.
 
 // 🏡 Task 4: Arguments and Parameters
@@ -69,14 +69,14 @@ If your name is `Oscar` mortgageCalculator() should return "Oscar, your monthly 
 
 For example,
 mortgageCalculator(200000, 0.05, 30); <-- should return 1,073.64
-//     P [ I ( 1 + I )^N ] / [ ( 1 + I )^N – 1 */
+    P [ I ( 1 + I )^N ] / [ ( 1 + I )^N – 1 */
 
-// function mortgageCalculator(p, i, n) {
-//     let Pow = Math.pow(1+i/12,n*12)
-//     let M = p*(Pow*(i/12))/(Pow-1);
-//     return (M.toFixed(2))
-// }
-// console.log(mortgageCalculator(200000, 0.05, 30))
+function mortgageCalculator(p, i, n) {
+    let Pow = Math.pow(1+i/12,n*12)
+    let M = p*(Pow*(i/12))/(Pow-1);
+    return (M.toFixed(2))
+}
+console.log(mortgageCalculator(200000, 0.05, 30))
 // MY PROBLEM ON THIS ONE WAS NOT KNOWING HOW TO FORMAT A CONSOLE.LOG.  IN THE PROCESS I MODIFIED THE FORMULA. ALSO DONT UNDERSTAND HOW RETURNS WORK NOR HOW TO SIMPLIFY THAT SO I CAN WRITE A STRING AND ADD THE RESULT TO IT.
 
 // 🏡 Task 5: Conditionals
@@ -86,16 +86,16 @@ Then, add control flow within your function such that IF creditScore is above 74
 
 Hint: To drop an interest rate by 5% you can take monthlyRate and multiply it by 0.95. Similarly, to increase an interest rate by 5% you'd do monthlyRate * 1.05. 
 */
-// function mortgageCalculator(p, i, n, c) {
+function mortgageCalculator(p, i, n, c) {
 
-//     if (c>740){i=i*0.95;}
-//     else if (c<660){i=i*1.05}
+    if (c>740){i=i*0.95;}
+    else if (c<660){i=i*1.05}
 
-//     let Pow = Math.pow(1+i/12,n*12)
-//     let M = p*(Pow*(i/12))/(Pow-1)
-//     return (M.toFixed(2))
-// }    
-// console.log(mortgageCalculator(200000, 0.05, 30, 580))
+    let Pow = Math.pow(1+i/12,n*12)
+    let M = p*(Pow*(i/12))/(Pow-1)
+    return (M.toFixed(2))
+}    
+console.log(mortgageCalculator(200000, 0.05, 30, 580))
 
 // MY PROBLEM ON THIS ONE WAS USING () TO REPRESENT * DOESNT WORK. AND THE CONDITIONALS NEED TO GO ON TOP */
 
@@ -115,30 +115,15 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.055, your monthly rate is $1136"
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
-// function variableInterestRate(p, i, n) {
-//     for (i = i - 0.2 ; i < 5; i=i+.5){ 
-//     let Pow = Math.pow(1+i/12,n*12)
-//     let M = p*(Pow*(i/12))/(Pow-1)
-//     console.log(name, "with and interest rate of "+i.toFixed(2)+", your monthly rate is "+M.toFixed(2))
-//     }
-// }
-// variableInterestRate(200000, 0.04, 30)
 
-
-var input;
-input = window.prompt('Enter starting interest rate', '0.02');
-let i = input;
-
-function variableInterestRate(p, i, n) {
-    for (i = i ; i <= .06; i=i+.005){
-    let Pow = Math.pow(1+i/12,n*12)
-    let M = p*(Pow*(i/12))/(Pow-1)
-    console.log(name, "with an interest rate of "+i.toFixed(3).+", your monthly rate is "+Math.round(M)
+function variableInterestRate(P, Int, N) {
+    for (let i = 0 ; i < 9; i++){ 
+    let Power = Math.pow(1+Int/12,N*12)
+    let monthlyRate = P*(Power*(Int/12))/(Power-1)
+    console.log(name, "with and interest rate of "+Int.toFixed(2)+", your monthly rate is "+monthlyRate.toFixed(2))
     }
 }
 variableInterestRate(200000, 0.04, 30)
-
-
 
 // MY PROBLEM ON THIS ONE WAS UNDERSTANDING WHAT IS MEANT BY PLUS OR MINUS 2%
 
@@ -153,6 +138,16 @@ variableInterestRate(200000, 0.04, 30)
 
 
 /* 🏡 Explore using `window.prompt()` to allow a user to input parameters in the browser */
+// var I;
+// I = window.prompt('Enter starting interest rate', '0.02');
 
+// function variableInterestRate(P, N) {
+//     for (i = 0 ; i <= .06; i=i+.005){
+//     let Power = Math.pow(1+I/12,N*12);
+//     let M = P*(Power*(I/12))/(Power-1);
+//     console.log(name, "with an interest rate of "+I+", your monthly rate is "+Math.round(M));
+//     }
+// }
+// variableInterestRate(200000, 30);
 
 /* 🏡  Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!) */
